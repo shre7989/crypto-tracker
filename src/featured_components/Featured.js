@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import FeaturedCard from "./cards/FeaturedCard";
 function Featured({ cryptoList }) {
+  console.log(cryptoList);
+
   return (
     <FeaturedContainer>
       <FeaturedCard

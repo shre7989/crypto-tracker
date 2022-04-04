@@ -25,7 +25,7 @@ function Card({ crypto }) {
         <br></br> <p className="secondary-label">{crypto.symbol}</p>
       </div>
       <div>{crypto.id}</div>
-      <div>💲{Math.round(crypto.quote.USD.price)}</div>
+      <div>💲{(crypto.quote.USD.price + "").slice(0, 6)}</div>
       <div className="h-group">
         {crypto.quote.USD.percent_change_1h >= 0 ? (
           <>

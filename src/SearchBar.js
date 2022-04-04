@@ -23,12 +23,12 @@ function SearchBar({ setCryptoList, cryptoList }) {
         placeholder="Search Crypto"
         onChange={(e) => searchCrypto(e)}
       ></input>
-      <div className="right">
+      {/* <div className="right">
         {" "}
         <div className="tag">Name</div>
         <div className="tag">Volume</div>
         <div className="tag">Crypto Id</div>
-      </div>
+      </div> */}
     </SearchBarContainer>
   );
 }
@@ -41,14 +41,14 @@ const SearchBarContainer = styled.div`
   background-color: black;
   width: 90vw;
   > input {
-    flex: 0.7;
+    flex: 1;
     padding: 10px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: black;
     font-size: 20px;
     color: white;
   }
-  .right {
+  /* .right {
     flex: 0.3;
     display: flex;
     align-items: center;
@@ -70,7 +70,7 @@ const SearchBarContainer = styled.div`
       cursor: pointer;
       filter: brightness(120%);
     }
-  }
+  } */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 `;
 export default SearchBar;

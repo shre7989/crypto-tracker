@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import List from "./List";
+import List from "./ListComponents/List";
 import SearchBar from "./SearchBar";
 import Spinner from "react-spinkit";
 import styled from "styled-components";
@@ -7,8 +7,7 @@ import Featured from "./featured_components/Featured";
 
 function App() {
   const [cryptoList, setCryptoList] = useState(false);
-  let cryptoListCopy;
-
+  const [cryptoListCopy, setCryptoListCopy] = useState(false);
   const getCryptoCurrencyData = function (setCryptoList) {
     //fetch data of cryptocurrencies from the
     const requestHeader = {
@@ -22,21 +21,25 @@ function App() {
     fetch("/v1/cryptocurrency/listings/latest?limit=1000", requestHeader)
       .then((res) => res.json())
       .then((cryptoList) => {
-        setCryptoList([...cryptoList.data]);
-        cryptoListCopy = cryptoList.data;
-        console.log(cryptoListCopy);
+        setCryptoList(cryptoList.data);
+        setCryptoListCopy(cryptoList.data);
       })
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => getCryptoCurrencyData(setCryptoList), []); //fetch the data from the api and set our crypto list
+  useEffect(() => getCryptoCurrencyData(setCryptoList, setCryptoListCopy), []); //fetch the data from the api and set our crypto list
+
   return (
     <AppContainer>
-      {cryptoList ? ( //display cryptolist only after it has been fetched and is not empty
+      {cryptoList && cryptoListCopy ? ( //display cryptolist only after it has been fetched and is not empty
         <>
-          <h1>Crypto at a glance...</h1>
-          <Featured cryptoList={cryptoList} />
-          <SearchBar setCryptoList={setCryptoList} cryptoList={cryptoList} />
+          <h1>🪙CRYPTO AT A GLANCE...</h1>
+          <hr />
+          <Featured cryptoList={cryptoListCopy} />
+          <SearchBar
+            setCryptoList={setCryptoList}
+            cryptoList={cryptoListCopy}
+          />
           <List cryptoList={cryptoList} />
         </>
       ) : (
@@ -68,7 +71,8 @@ const AppContainer = styled.div`
     align-self: flex-start;
     margin-left: 5vw;
     text-align: left;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-weight: bold;
   }
 `;
