@@ -19,7 +19,7 @@ function ListHeader() {
 }
 
 const ListContainer = styled.div`
-  width: 94vw;
+  width: 90vw;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   align-items: center;

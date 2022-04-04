@@ -91,7 +91,7 @@ const CardContainer = styled.div`
   grid-template-columns: repeat(10, 1.2fr);
   align-items: center;
   justify-content: center;
-  width: 94vw;
+  width: 90vw;
   font-size: 15px;
   border-bottom: 1px solid lightgrey;
 

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "./Card";
+import Card from "./card_components/Card";
 import ListHeader from "./ListHeader";
 
-function List({ cryptoList, requestHeader }) {
+function List({ cryptoList }) {
   return (
     <ListContainer>
       <ListHeader />
